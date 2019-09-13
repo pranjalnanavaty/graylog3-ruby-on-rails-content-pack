@@ -19,7 +19,7 @@
       "data": {
         "title": {
           "@type": "string",
-          "@value": "Rails Logs 12223"
+          "@value": "Rails Logs"
         },
         "configuration": {
           "tls_key_file": {
