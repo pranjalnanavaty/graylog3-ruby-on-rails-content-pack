@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "id": "e0947c55-8d2e-4623-a2c5-67133be83254",
+  "id": "fde6da2f-b4ba-43b0-bd78-41d86dbecaaf",
   "rev": 1,
   "name": "Ruby On Rails Content Pack Graylog3",
   "summary": "Graylog 3.0+ compatible version of Ruby on Rails Content Pack.",
@@ -15,11 +15,11 @@
         "name": "input",
         "version": "1"
       },
-      "id": "4631630f-f4b8-410d-8d28-e5ea4959a691",
+      "id": "646c0889-17a1-468b-babb-95af12bb188d",
       "data": {
         "title": {
           "@type": "string",
-          "@value": "Rails Logs"
+          "@value": "RoR Apps Access Logs"
         },
         "configuration": {
           "tls_key_file": {
@@ -88,156 +88,25 @@
           "@type": "boolean",
           "@value": false
         },
-				"extractors" : [
-					{
-            "target_field": {
-              "@type": "string",
-              "@value": "method"
-            },
-            "condition_value":  {
-              "@type": "string",
-              "@value": ""
-            },
-            "order":  {
-              "@type": "integer",
-              "@value": 0
-            },
-            "converters": [
-              {
-    		        "type": {
-                  "@type": "string",
-                  "@value": "LOWERCASE"
-                },
-    		        "configuration":  { }
-  		         }
-            ],
-            "configuration":  {
-  		        "regex_value":  {
-                "@type": "string",
-                "@value": "method=(.+?)(\\s|$)"
-              }
-  		      },
-            "source_field": {
-              "@type": "string",
-              "@value": "message"
-            },
-            "title": {
-              "@type": "string",
-              "@value": "Rails: method"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "REGEX"
-            },
-            "cursor_strategy": {
-              "@type": "string",
-              "@value": "COPY"
-            },
-            "condition_type": {
-              "@type": "string",
-              "@value": "NONE"
-            }
-		      },
-          {
-            "target_field": {
-              "@type": "string",
-              "@value": "path"
-            },
-            "condition_value":  {
-              "@type": "string",
-              "@value": ""
-            },
-            "order":  {
-              "@type": "integer",
-              "@value": 0
-            },
-            "converters": [],
-            "configuration":  {
-              "regex_value":  {
-                "@type": "string",
-                "@value": "path=(.+?)(\\s|$)"
-              }
-            },
-            "source_field": {
-              "@type": "string",
-              "@value": "message"
-            },
-            "title": {
-              "@type": "string",
-              "@value": "Rails: path"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "REGEX"
-            },
-            "cursor_strategy": {
-              "@type": "string",
-              "@value": "COPY"
-            },
-            "condition_type": {
-              "@type": "string",
-              "@value": "NONE"
-            }
-		      },
-          {
-            "target_field": {
-              "@type": "string",
-              "@value": "controller"
-            },
-            "condition_value":  {
-              "@type": "string",
-              "@value": ""
-            },
-            "order":  {
-              "@type": "integer",
-              "@value": 0
-            },
-            "converters": [],
-            "configuration":  {
-              "regex_value":  {
-                "@type": "string",
-                "@value": "controller=(.+?)(\\s|$)"
-              }
-            },
-            "source_field": {
-              "@type": "string",
-              "@value": "message"
-            },
-            "title": {
-              "@type": "string",
-              "@value": "Rails: controller"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "REGEX"
-            },
-            "cursor_strategy": {
-              "@type": "string",
-              "@value": "COPY"
-            },
-            "condition_type": {
-              "@type": "string",
-              "@value": "NONE"
-            }
-		      },
+        "extractors": [
           {
             "target_field": {
               "@type": "string",
               "@value": "action"
             },
-            "condition_value":  {
+            "condition_value": {
               "@type": "string",
               "@value": ""
             },
-            "order":  {
+            "order": {
               "@type": "integer",
               "@value": 0
             },
             "converters": [],
-            "configuration":  {
-              "regex_value":  {
+            "configuration": {
+              "regex_value": {
                 "@type": "string",
-                "@value": "action=(.+?)(\\s|$)"
+                "@value": "action=([^\\s]+)"
               }
             },
             "source_field": {
@@ -246,7 +115,7 @@
             },
             "title": {
               "@type": "string",
-              "@value": "Rails: action"
+              "@value": "Rails: Action"
             },
             "type": {
               "@type": "string",
@@ -260,33 +129,25 @@
               "@type": "string",
               "@value": "NONE"
             }
-		      },
+          },
           {
             "target_field": {
               "@type": "string",
-              "@value": "status"
+              "@value": "path"
             },
-            "condition_value":  {
+            "condition_value": {
               "@type": "string",
               "@value": ""
             },
-            "order":  {
+            "order": {
               "@type": "integer",
               "@value": 0
             },
-            "converters": [
-              {
-                "type": {
-                  "@type": "string",
-                  "@value": "NUMERIC"
-                },
-                "configuration":  { }
-               }
-            ],
-            "configuration":  {
-              "regex_value":  {
+            "converters": [],
+            "configuration": {
+              "regex_value": {
                 "@type": "string",
-                "@value": "status=(.+?)(\\s|$)"
+                "@value": "path=([^\\s]+)"
               }
             },
             "source_field": {
@@ -295,7 +156,7 @@
             },
             "title": {
               "@type": "string",
-              "@value": "Rails: status"
+              "@value": "Rails: Path"
             },
             "type": {
               "@type": "string",
@@ -309,33 +170,25 @@
               "@type": "string",
               "@value": "NONE"
             }
-		      },
+          },
           {
             "target_field": {
               "@type": "string",
-              "@value": "duration"
+              "@value": "method"
             },
-            "condition_value":  {
+            "condition_value": {
               "@type": "string",
               "@value": ""
             },
-            "order":  {
+            "order": {
               "@type": "integer",
               "@value": 0
             },
-            "converters": [
-              {
-                "type": {
-                  "@type": "string",
-                  "@value": "NUMERIC"
-                },
-                "configuration":  { }
-               }
-            ],
-            "configuration":  {
-              "regex_value":  {
+            "converters": [],
+            "configuration": {
+              "regex_value": {
                 "@type": "string",
-                "@value": "duration=(.+?)(\\s|$)"
+                "@value": "method=([^\\s]+)"
               }
             },
             "source_field": {
@@ -344,7 +197,7 @@
             },
             "title": {
               "@type": "string",
-              "@value": "Rails: duration"
+              "@value": "Rails: Method"
             },
             "type": {
               "@type": "string",
@@ -358,33 +211,25 @@
               "@type": "string",
               "@value": "NONE"
             }
-		      },
+          },
           {
             "target_field": {
               "@type": "string",
-              "@value": "view_duration"
+              "@value": "controller"
             },
-            "condition_value":  {
+            "condition_value": {
               "@type": "string",
               "@value": ""
             },
-            "order":  {
+            "order": {
               "@type": "integer",
               "@value": 0
             },
-            "converters": [
-              {
-                "type": {
-                  "@type": "string",
-                  "@value": "NUMERIC"
-                },
-                "configuration":  { }
-               }
-            ],
-            "configuration":  {
-              "regex_value":  {
+            "converters": [],
+            "configuration": {
+              "regex_value": {
                 "@type": "string",
-                "@value": "view=(.+?)(\\s|$)"
+                "@value": "controller=([^\\s]+)"
               }
             },
             "source_field": {
@@ -393,7 +238,7 @@
             },
             "title": {
               "@type": "string",
-              "@value": "Rails: view duration"
+              "@value": "Rails: Controller"
             },
             "type": {
               "@type": "string",
@@ -407,56 +252,7 @@
               "@type": "string",
               "@value": "NONE"
             }
-		      },
-          {
-            "target_field": {
-              "@type": "string",
-              "@value": "db_duration"
-            },
-            "condition_value":  {
-              "@type": "string",
-              "@value": ""
-            },
-            "order":  {
-              "@type": "integer",
-              "@value": 0
-            },
-            "converters": [
-              {
-                "type": {
-                  "@type": "string",
-                  "@value": "NUMERIC"
-                },
-                "configuration":  { }
-               }
-            ],
-            "configuration":  {
-              "regex_value":  {
-                "@type": "string",
-                "@value": "db=(.+?)(\\s|$)"
-              }
-            },
-            "source_field": {
-              "@type": "string",
-              "@value": "message"
-            },
-            "title": {
-              "@type": "string",
-              "@value": "Rails: db duration"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "REGEX"
-            },
-            "cursor_strategy": {
-              "@type": "string",
-              "@value": "COPY"
-            },
-            "condition_type": {
-              "@type": "string",
-              "@value": "NONE"
-            }
-		      }
+          }
         ]
       },
       "constraints": [
